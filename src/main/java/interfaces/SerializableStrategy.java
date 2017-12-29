@@ -16,12 +16,12 @@ public interface SerializableStrategy {
     void openReadableLibrary() throws IOException;
 
     /*
-      Setup Serializing the Playlist
+      Setup Serializing the home.Playlist
      */
     void openWritablePlaylist() throws IOException;
 
     /*
-      Setup Deserializing the Playlist
+      Setup Deserializing the home.Playlist
      */
     void openReadablePlaylist() throws IOException;
 

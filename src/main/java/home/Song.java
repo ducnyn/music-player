@@ -1,4 +1,4 @@
-package model;
+package home;
 
 import javafx.beans.value.ObservableValue;
 import javafx.beans.property.SimpleStringProperty;

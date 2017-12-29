@@ -1,4 +1,4 @@
-package model;
+package home;
 
 import interfaces.Song;
 import javafx.collections.ModifiableObservableListBase;
