@@ -12,13 +12,25 @@
 .list-view:focused {
     -fx-background-insets: 0,1;
 }
-.menu-list{
-    -fx-background-color: transparent, #191919;
-}
+.menu-list,
 .main-list{
     -fx-background-color: transparent, #191919;
 }
 
+.list-cell{
+    -fx-background-color: #191919;
+    -fx-text-fill: rgb(189,189,189);
+
+}
+
+.list-cell:selected{
+    -fx-background-color: #2C2C2D;
+    -fx-text-fill: #ffffff;
+}
+.list-cell:hover{
+    -fx-background-color: #1E1E1E;
+    -fx-text-fill: #ffffff;
+}
 
 .label,
 .menu-item{
@@ -28,7 +40,6 @@
 .menu-item:focused .label{
     -fx-text-fill: rgb(255,255,255);
 }
-
 .menu-bar,
 .menu,
 .menu-item,

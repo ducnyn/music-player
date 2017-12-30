@@ -1,11 +1,18 @@
 package interfaces;
 
 import javafx.beans.value.ObservableValue;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 
 import java.io.Serializable;
 
 
 public interface Song {
+
+//    Media getMedia();
+
+    MediaPlayer getMediaPlayer();
+
     String getAlbum() ;
 
     void setAlbum(String album) ;

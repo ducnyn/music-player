@@ -2,16 +2,52 @@ package home;
 
 import javafx.beans.value.ObservableValue;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.MapChangeListener;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 
+import java.io.File;
 
 
 public class Song implements interfaces.Song {
 
+    //all private, use getters and setters
     private SimpleStringProperty path;
     private SimpleStringProperty title;
     private SimpleStringProperty album;
     private SimpleStringProperty interpret;
     private long id;
+    private Media song;
+    private MediaPlayer mdplayer;
+
+
+    public Song(File file) {
+        song = new Media(file.toURI().toString());
+
+        song.getMetadata().addListener((MapChangeListener.Change<? extends String, ? extends Object> c) -> {
+            if (c.wasAdded()) {
+                if ("title".equals(c.getKey())) {
+                    setTitle(c.getValueAdded().toString());
+                    System.out.println(getTitle());
+                } else if ("album".equals(c.getKey())) {
+                    setAlbum(c.getValueAdded().toString());
+                } else if ("artist".equals(c.getKey())) {
+                    setInterpret(c.getValueAdded().toString());
+                }
+            }
+        });
+
+        mdplayer = new MediaPlayer(song); // The meta data will be null until the action in which this
+                                            // constructor was called has finished.
+    }
+
+//    public Media getMedia() {
+//        return song;
+//    }
+    @Override
+    public MediaPlayer getMediaPlayer() {
+        return mdplayer;
+    }
 
     @Override
     public String getAlbum() {
@@ -68,11 +104,13 @@ public class Song implements interfaces.Song {
 
     @Override
     public ObservableValue<String> pathProperty() {
+
         return this.path;
     }
 
     @Override
     public ObservableValue<String> albumProperty() {
+
         return this.album;
     }
 
