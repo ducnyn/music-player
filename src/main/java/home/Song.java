@@ -1,5 +1,6 @@
 package home;
 
+import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.MapChangeListener;
@@ -15,38 +16,34 @@ public class Song implements interfaces.Song {
     private SimpleStringProperty path;
     private SimpleStringProperty title;
     private SimpleStringProperty album;
-    private SimpleStringProperty interpret;
+    private SimpleStringProperty artist;
     private long id;
-    private Media song;
-    private MediaPlayer mdplayer;
+    private Media media;
+    private MediaPlayer mediaPlayer;
 
 
     public Song(File file) {
-        song = new Media(file.toURI().toString());
+        media = new Media(file.toURI().toString());
+        setPath(file.getPath());
+        setTitle("");
+        setAlbum("");
+        setArtist("");
 
-        song.getMetadata().addListener((MapChangeListener.Change<? extends String, ? extends Object> c) -> {
-            if (c.wasAdded()) {
-                if ("title".equals(c.getKey())) {
-                    setTitle(c.getValueAdded().toString());
-                    System.out.println(getTitle());
-                } else if ("album".equals(c.getKey())) {
-                    setAlbum(c.getValueAdded().toString());
-                } else if ("artist".equals(c.getKey())) {
-                    setInterpret(c.getValueAdded().toString());
-                }
-            }
-        });
 
-        mdplayer = new MediaPlayer(song); // The meta data will be null until the action in which this
+        // The meta data will be null until the action in which this
                                             // constructor was called has finished.
     }
 
-//    public Media getMedia() {
-//        return song;
-//    }
+    public Media getMedia() {
+        return media;
+    }
     @Override
     public MediaPlayer getMediaPlayer() {
-        return mdplayer;
+        return mediaPlayer;
+    }
+    
+    public void setMediaPlayer(MediaPlayer mediaplayer){
+        this.mediaPlayer = mediaplayer;
     }
 
     @Override
@@ -61,14 +58,14 @@ public class Song implements interfaces.Song {
     }
 
     @Override
-    public String getInterpret() {
-        return interpretProperty().getValue();
+    public String getArtist() {
+        return artistProperty().getValue();
     }
 
     @Override
-    public void setInterpret(String interpret) {
+    public void setArtist(String artist) {
 
-        this.interpret = new SimpleStringProperty(interpret);
+        this.artist = new SimpleStringProperty(artist);
 
     }
 
@@ -115,9 +112,9 @@ public class Song implements interfaces.Song {
     }
 
     @Override
-    public ObservableValue<String> interpretProperty() {
+    public ObservableValue<String> artistProperty() {
 
-        return this.interpret;
+        return this.artist;
     }
 
     @Override
@@ -125,4 +122,6 @@ public class Song implements interfaces.Song {
 
         return this.title;
     }
+
+
 }

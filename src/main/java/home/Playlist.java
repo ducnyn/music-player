@@ -1,6 +1,5 @@
 package home;
 
-import interfaces.Song;
 import javafx.collections.ModifiableObservableListBase;
 
 import java.rmi.RemoteException;
@@ -79,5 +78,14 @@ public class Playlist extends ModifiableObservableListBase<Song> implements inte
     @Override
     protected Song doRemove(int i) {
         return listOfSongs.remove(i);
+    }
+
+    public boolean pathExists(Song songToCheck){
+        for(Song libSong : this){
+            if ( libSong.getPath().equals(songToCheck.getPath()) ){
+                return true;
+            }
+        }
+        return false;
     }
 }

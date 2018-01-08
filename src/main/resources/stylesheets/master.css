@@ -5,16 +5,41 @@
 }
 /*191919 1E1E1E*/
 
-.button{
+.sidebar-button{
+    -fx-background-color: transparent;
+    -fx-text-fill: rgb(189,189,189);
+    -fx-background-size: cover;
+    -fx-alignment: baseline-left;
+
+}
+.sidebar-button:hover{
+    -fx-text-fill: rgb(255,255,255);
+
+}
+
+.media-button{
     -fx-background-color: transparent;
 }
 
 .list-view:focused {
     -fx-background-insets: 0,1;
 }
-.menu-list,
+.menu-list{
+    -fx-background-color: transparent, #191919;
+}
+
+.empty-list{
+    -fx-background-color: transparent, #191919;
+}
 .main-list{
     -fx-background-color: transparent, #191919;
+}
+.detail-field{
+    -fx-background-color: #1E1E1E;
+    -fx-text-fill: rgb(189,189,189);
+}
+.detail-field:focused{
+    -fx-background-color: #2C2C2D;
 }
 
 .list-cell{
@@ -24,7 +49,7 @@
 }
 
 .list-cell:selected{
-    -fx-background-color: #2C2C2D;
+    -fx-background-color: #2A2A2A;
     -fx-text-fill: #ffffff;
 }
 .list-cell:hover{

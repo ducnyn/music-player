@@ -9,7 +9,7 @@ import java.io.Serializable;
 
 public interface Song {
 
-//    Media getMedia();
+    Media getMedia();
 
     MediaPlayer getMediaPlayer();
 
@@ -17,9 +17,9 @@ public interface Song {
 
     void setAlbum(String album) ;
 
-    String getInterpret() ;
+    String getArtist() ;
 
-    void setInterpret(String interpret) ;
+    void setArtist(String artist) ;
 
     String getPath() ;
 
@@ -35,7 +35,7 @@ public interface Song {
 
     ObservableValue<String> pathProperty();
     ObservableValue<String> albumProperty();
-    ObservableValue<String> interpretProperty();
+    ObservableValue<String> artistProperty();
     ObservableValue<String> titleProperty();
 
     String toString();

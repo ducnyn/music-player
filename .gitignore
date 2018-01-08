@@ -27,3 +27,5 @@ hs_err_pid*
 Kurs/
 
 *.iml
+
+target/
