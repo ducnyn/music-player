@@ -16,8 +16,8 @@ public class HomeView extends VBox{
             Button libraryButton = new Button("Library");
             Button playlistButton = new Button("Playlist");
         VBox sideBar = new VBox(libraryButton,playlistButton);
-            ListView<Song> mainList = new ListView();
-            ListView<Song> emptyList = new ListView();
+            ListView<interfaces.Song> mainList = new ListView();
+            ListView<interfaces.Song> emptyList = new ListView();
         VBox mainBox = new VBox(mainList, emptyList);
             Label titleLabel = new Label("Title");
             TextField titleField = new TextField();
@@ -120,7 +120,7 @@ public class HomeView extends VBox{
         artistField.setText(artist);
     }
 
-    public Song getSelectedSong(){
+    public interfaces.Song getSelectedSong(){
         return mainList.getSelectionModel().getSelectedItem();
     }
 

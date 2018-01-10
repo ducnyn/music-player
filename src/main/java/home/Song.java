@@ -37,7 +37,7 @@ public class Song implements interfaces.Song {
     public Media getMedia() {
         return media;
     }
-    @Override
+
     public MediaPlayer getMediaPlayer() {
         return mediaPlayer;
     }
@@ -122,6 +122,7 @@ public class Song implements interfaces.Song {
 
         return this.title;
     }
+
 
 
 }

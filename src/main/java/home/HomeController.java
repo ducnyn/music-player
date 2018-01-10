@@ -92,9 +92,9 @@ public class HomeController {
         });
 
         view.mainList.setCellFactory(c -> {
-            ListCell<Song> cell = new ListCell<Song>() {
+            ListCell<interfaces.Song> cell = new ListCell<interfaces.Song>() {
                 @Override
-                protected void updateItem(Song myObject, boolean b) {
+                protected void updateItem(interfaces.Song myObject, boolean b) {
                     super.updateItem(myObject, myObject == null || b);
                     if (myObject != null) {
                         setText(myObject.getTitle());

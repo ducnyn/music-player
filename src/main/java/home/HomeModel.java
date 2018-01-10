@@ -2,7 +2,7 @@ package home;
 
 
 import javafx.scene.media.MediaPlayer;
-
+import interfaces.Song;
 import java.rmi.RemoteException;
 
 public class HomeModel {

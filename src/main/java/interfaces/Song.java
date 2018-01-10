@@ -4,9 +4,6 @@ import javafx.beans.value.ObservableValue;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
-import java.io.Serializable;
-
-
 public interface Song {
 
     Media getMedia();
