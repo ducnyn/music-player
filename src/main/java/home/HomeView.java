@@ -77,7 +77,7 @@ public class HomeView extends VBox{
 
         mainBox.setPadding(new Insets(-1, 0, -1, 0));
 
-        mainList.getStyleClass().add("main-list");
+        mainList.getStyleClass().add("mainServer-list");
         mainList.setPadding(new Insets(0, 1, -1, 1));
         mainList.setContextMenu(mainListContext);
         mainList.setFixedCellSize(40);

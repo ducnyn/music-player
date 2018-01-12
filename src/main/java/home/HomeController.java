@@ -1,5 +1,6 @@
 package home;
 
+import interfaces.MediaControl;
 import javafx.collections.MapChangeListener;
 import javafx.scene.Node;
 import javafx.scene.control.ListCell;
@@ -13,8 +14,12 @@ import javafx.stage.DirectoryChooser;
 import java.io.File;
 import java.io.FilenameFilter;
 import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 
-public class HomeController {
+public class HomeController extends UnicastRemoteObject implements MediaControl {
+
+    protected HomeController() throws RemoteException {
+    }
 
     public void link(HomeModel model, HomeView view) {
 
@@ -365,7 +370,8 @@ public class HomeController {
      ********************************************************************************/
     //these are private, because they should be only accessed by the controller
 
-    private static File[] directoryFilter(String endswith, Node parent){
+    @Override
+    public File[] directoryFilter(String endswith, Node parent){
         DirectoryChooser directoryChooser = new DirectoryChooser();
         directoryChooser.setTitle("Select a folder to import");
         directoryChooser.setInitialDirectory(new File("/"));
