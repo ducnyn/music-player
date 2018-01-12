@@ -1,5 +1,6 @@
 package home;
 
+import javafx.beans.value.ObservableValue;
 import javafx.collections.MapChangeListener;
 import javafx.scene.Node;
 import javafx.scene.control.ListCell;
@@ -16,14 +17,8 @@ import java.rmi.RemoteException;
 
 public class HomeController {
 
-    public void link(HomeModel model, HomeView view) {
 
-
-        /********************************************************************************
-         *                            PROPERTY LISTENERS                                *
-         ********************************************************************************/
-
-        view.mainList.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+        public void changeDetails(ObservableValue observable, interfaces.Song oldValue, interfaces.Song newValue, HomeView view){
             if(newValue!=null) {
                 if (newValue.getAlbum() != null) {
                     view.setAlbumDetail(newValue.getAlbum());
@@ -35,8 +30,24 @@ public class HomeController {
                     view.setArtistDetail(newValue.getArtist());
                 } else view.setArtistDetail("");
             }
+        }
+
+        public void addToPlaylist(HomeModel model, HomeView view){
+            model.getPlaylist().add(view.mainList.getSelectionModel().getSelectedItem());
+
+        }
+    public void link(HomeModel model, HomeView view) {
+
+
+        /********************************************************************************
+         *                            PROPERTY LISTENERS                                *
+         ********************************************************************************/
+
+        view.mainList.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            changeDetails(observable, oldValue, newValue, view);
 
         });
+
 //    todo    model.getLibrary().addListener((observable, oldValue, newValue)->{
 //            newValue.
 //        });
@@ -88,7 +99,7 @@ public class HomeController {
          ********************************************************************************/
 
         view.addToPlaylist.setOnAction(a->{
-           model.getPlaylist().add(view.mainList.getSelectionModel().getSelectedItem());
+            addToPlaylist(model, view);
         });
 
         view.mainList.setCellFactory(c -> {
