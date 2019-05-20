@@ -1,5 +1,6 @@
 package home;
 
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.beans.property.SimpleStringProperty;
@@ -17,17 +18,32 @@ public class Song implements interfaces.Song {
     private SimpleStringProperty title;
     private SimpleStringProperty album;
     private SimpleStringProperty artist;
+    private SimpleBooleanProperty status;
     private long id;
     private Media media;
     private MediaPlayer mediaPlayer;
 
 
     public Song(File file) {
+        System.out.println(file.toURI().toString());
         media = new Media(file.toURI().toString());
         setPath(file.getPath());
         setTitle("");
         setAlbum("");
         setArtist("");
+        mediaPlayer = new MediaPlayer(media);
+
+        media.getMetadata().addListener((MapChangeListener.Change<? extends String, ? extends Object> c) -> {
+            if (c.wasAdded()) {
+                if ("title".equals(c.getKey())) {
+                    setTitle(c.getValueAdded().toString());
+                } else if ("album".equals(c.getKey())) {
+                    setAlbum(c.getValueAdded().toString());
+                } else if ("artist".equals(c.getKey())) {
+                    setArtist(c.getValueAdded().toString());
+                }
+            }
+        });
 
 
         // The meta data will be null until the action in which this
@@ -122,6 +138,7 @@ public class Song implements interfaces.Song {
 
         return this.title;
     }
+
 
 
 

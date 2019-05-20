@@ -8,6 +8,8 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.lang.reflect.Method;
+
 public class Main extends Application{
 
     public static void main(String[] args) {
@@ -23,7 +25,14 @@ public class Main extends Application{
         scene.getStylesheets().add("stylesheets/master.css");
         controller.link(homeModel, homeView);
 
+        Class<Stage> newClass = Stage.class;
         stage.setTitle("Media Player");
+        for (Method m: newClass.getDeclaredMethods()){
+            System.out.println(m.toString());
+        }
+
+        System.out.println(newClass.getMethod("getTitle").invoke(stage));
+
         stage.setMinHeight(480);
         stage.setMinWidth(800);
         stage.setScene(scene);

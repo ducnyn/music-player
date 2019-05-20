@@ -27,7 +27,9 @@ public class HomeView extends VBox{
             TextField artistField = new TextField();
             Label debugLabel = new Label("Debug Area:");
             TextField debugField = new TextField ("Debug Field");
-        VBox debug = new VBox(debugLabel, debugField);
+            TextField debugField2= new TextField ("Debug Field2");
+
+    VBox debug = new VBox(debugLabel, debugField, debugField2);
         VBox details = new VBox(titleLabel, titleField, albumLabel, albumField, artistLabel, artistField,debug);
     HBox globalHBox = new HBox(sideBar, mainBox, details);
 
