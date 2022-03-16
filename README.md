@@ -1,6 +1,4 @@
 # mediaplayer
-A simple music player based on JavaFX with the use of the MVC pattern.
-
-This was my own unfinished sideproject to the Fpt lab project of the University Duisburg-Essen to get my hands on everything myself and for me to tinker with UI Design without the restriction of the assignment requirements.
+simple JavaFX project to explore the mvc pattern
 
 ![](images/screenshot.png)
